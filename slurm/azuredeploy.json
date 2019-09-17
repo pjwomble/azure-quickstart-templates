@@ -18,7 +18,7 @@
           "type": "string",
           "defaultValue": "Standard_D1_v2",
           "metadata": {
-              "description": "Size of the master."
+              "description": "Size of the nodes."
           }
       },
       "scaleNumber": {
@@ -26,13 +26,6 @@
           "defaultValue": 2,
           "metadata": {
               "description": "This template create N worker node. Use scaleNumber to specify that N."
-          }
-      },
-      "vmSizeWorker": {
-          "type": "string",
-          "defaultValue": "Standard_D1_v2",
-          "metadata": {
-              "description": "Size of the workers."
           }
       },
       "_artifactsLocation": {
@@ -257,7 +250,7 @@
           },
           "properties": {
               "hardwareProfile": {
-                  "vmSizeWorker": "[parameters('vmSizeWorker')]"
+                  "vmSize": "[parameters('vmSize')]"
               },
               "osProfile": {
                   "computerName": "[concat(variables('vmNameWorker'), copyindex())]",
