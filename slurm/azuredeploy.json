@@ -250,7 +250,7 @@
           },
           "properties": {
               "hardwareProfile": {
-                  "vmSize": "[parameters('vmSize')]"
+                  "vmSize": "Standard_A1_v2"
               },
               "osProfile": {
                   "computerName": "[concat(variables('vmNameWorker'), copyindex())]",
