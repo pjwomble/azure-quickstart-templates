@@ -105,7 +105,7 @@ do
    do  
     sudo -u $ADMIN_USERNAME scp $mungekey $ADMIN_USERNAME@$worker:/tmp/munge.key >> /tmp/error.txt.$$ 2>&1
     sleep 1
-    echo "waiting for worker to come online"
+    echo "waiting for worker to come online" >> /tmp/azuredeploy.log.$$ 2>&1
   done  
     
    sudo -u $ADMIN_USERNAME scp $mungekey $ADMIN_USERNAME@$worker:/tmp/munge.key >> /tmp/azuredeploy.log.$$ 2>&1 
