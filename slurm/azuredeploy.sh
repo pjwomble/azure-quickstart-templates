@@ -103,6 +103,7 @@ do
    
    while (( $(grep -c "Permission denied" /tmp/error.txt) >= 1 ))
    do  
+    echo "$worker"
     sudo -u $ADMIN_USERNAME scp $mungekey $ADMIN_USERNAME@$worker:/tmp/munge.key >> /tmp/error.txt.$$ 2>&1
     sleep 1
     echo "waiting for worker to come online" >> /tmp/azuredeploy.log.$$ 2>&1
