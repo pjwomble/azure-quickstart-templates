@@ -106,6 +106,10 @@ do
    sudo -u $ADMIN_USERNAME scp $SLURMCONF $ADMIN_USERNAME@$worker:/tmp/slurm.conf >> /tmp/error.txt 2>&1
    sudo -u $ADMIN_USERNAME scp /tmp/hosts.$$ $ADMIN_USERNAME@$worker:/tmp/hosts >> /tmp/error.txt 2>&1
    
+   echo "look here" >> /tmp/azuredeploy.log.$$ 2>&1
+   grep -c "Permission denied" /tmp/error.txt >> /tmp/azuredeploy.log.$$ 2>&1
+   cat /tmp/error.txt >> /tmp/azuredeploy.log.$$ 2>&1
+      
    while (( $(grep -c "Permission denied" /tmp/error.txt) >= 1 ))
    do  
      echo "$worker" >> /tmp/azuredeploy.log.$$ 2>&1
