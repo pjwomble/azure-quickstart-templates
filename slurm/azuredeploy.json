@@ -152,7 +152,7 @@
           ],
           "properties": {
               "hardwareProfile": {
-                  "vmSize": "Standard_E2_v3"
+                  "vmSize": "Standard_DS1_v2"
               },
               "osProfile": {
                   "computerName": "[variables('vmNameMaster')]",
