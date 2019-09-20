@@ -97,6 +97,17 @@ do
    worker=$WORKER_NAME$i
 
    echo "SCP to $worker"  >> /tmp/azuredeploy.log.$$ 2>&1 
+   sudo rm /tmp/error.txt
+   sudo touch /tmp/error.txt
+   sudo -u $ADMIN_USERNAME scp $mungekey $ADMIN_USERNAME@$worker:/tmp/munge.key >> /tmp/error.txt.$$ 2>&1
+   
+   while (( $(grep -c "Permission denied" /tmp/error.txt) >= 1 ))
+   do  
+    sudo -u $ADMIN_USERNAME scp $mungekey $ADMIN_USERNAME@$worker:/tmp/munge.key >> /tmp/error.txt.$$ 2>&1
+    sleep 1
+    echo "waiting for worker to come online"
+  done  
+    
    sudo -u $ADMIN_USERNAME scp $mungekey $ADMIN_USERNAME@$worker:/tmp/munge.key >> /tmp/azuredeploy.log.$$ 2>&1 
    sudo -u $ADMIN_USERNAME scp $SLURMCONF $ADMIN_USERNAME@$worker:/tmp/slurm.conf >> /tmp/azuredeploy.log.$$ 2>&1
    sudo -u $ADMIN_USERNAME scp /tmp/hosts.$$ $ADMIN_USERNAME@$worker:/tmp/hosts >> /tmp/azuredeploy.log.$$ 2>&1
