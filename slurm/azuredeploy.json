@@ -160,16 +160,14 @@
                   "adminPassword": "[parameters('adminPassword')]"
               },
               "storageProfile": {
-                  "imageReference": {
-                      "publisher": "[variables('imagePublisher')]",
-                      "offer": "[variables('imageOffer')]",
-                      "sku": "[variables('ubuntuOSVersion')]",
-                      "version": "latest"
-                  },
                   "osDisk": {
                       "name": "[concat(variables('vmNameMaster'),'_OSDisk')]",
-                      "caching": "ReadWrite",
+                      "osType": "Linux",
                       "createOption": "FromImage",
+                      "caching": "ReadWrite",
+                      "image": {
+                        "uri": "http://coloradoriverstatemod.blob.core.windows.net/crb/master-image-20190924014726.vhd"
+                      },                  
                       "managedDisk": {
                           "storageAccountType": "Standard_LRS"
                       }
@@ -258,21 +256,19 @@
                   "adminPassword": "[parameters('adminPassword')]"
               },          
               "storageProfile": {
-                  "imageReference": {
-                      "publisher": "[variables('imagePublisher')]",
-                      "offer": "[variables('imageOffer')]",
-                      "sku": "[variables('ubuntuOSVersion')]",
-                      "version": "latest"
-                  },
                   "osDisk": {
                       "name": "[concat(variables('vmNameWorker'), copyindex(),'_OSDisk')]",
-                      "caching": "ReadWrite",
+                      "osType": "Linux",
                       "createOption": "FromImage",
+                      "caching": "ReadWrite",
+                      "image": {
+                        "uri": "http://coloradoriverstatemod.blob.core.windows.net/crb/worker0-image-20190924014228.vhd"
+                      },                  
                       "managedDisk": {
                           "storageAccountType": "Standard_LRS"
                       }
                   }
-              },   
+              },      
               "networkProfile": {
                   "networkInterfaces": [
                       {
