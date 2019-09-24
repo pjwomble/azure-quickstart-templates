@@ -166,10 +166,10 @@
                       "createOption": "FromImage",
                       "caching": "ReadWrite",
                       "image": {
-                        "uri": "/subscriptions/a1929e86-d8fe-434a-9df3-c9d5845141c8/resourceGroups/CRB_Storage/providers/Microsoft.Compute/images/master-image-20190924014726"
+                        "uri": "http://coloradoriverstatemod.blob.core.windows.net/crb/master-image-20190924014726.vhd"
                       },                  
-                      "managedDisk": {
-                          "storageAccountType": "Standard_LRS"
+                      "vhd": {
+                        "uri": "http://coloradoriverstatemod.blob.core.windows.net/crb/myDisk.vhd"
                       }
                   }
               },
@@ -256,19 +256,21 @@
                   "adminPassword": "[parameters('adminPassword')]"
               },          
               "storageProfile": {
+                  "imageReference": {
+                      "publisher": "[variables('imagePublisher')]",
+                      "offer": "[variables('imageOffer')]",
+                      "sku": "[variables('ubuntuOSVersion')]",
+                      "version": "latest"
+                  },
                   "osDisk": {
                       "name": "[concat(variables('vmNameWorker'), copyindex(),'_OSDisk')]",
-                      "osType": "Linux",
-                      "createOption": "FromImage",
                       "caching": "ReadWrite",
-                      "image": {
-                        "uri": "/subscriptions/a1929e86-d8fe-434a-9df3-c9d5845141c8/resourceGroups/CRB_Storage/providers/Microsoft.Compute/images/worker0-image-20190924014228"
-                      },                  
+                      "createOption": "FromImage",
                       "managedDisk": {
                           "storageAccountType": "Standard_LRS"
                       }
                   }
-              },      
+              },     
               "networkProfile": {
                   "networkInterfaces": [
                       {
