@@ -31,7 +31,9 @@ ADMIN_PASSWORD=$8
 TEMPLATE_BASE=$9
 
 # Update master node
-echo $MASTER_IP $MASTER_NAME >> /etc/hosts
+sudo true > /tmp/hosts.txt
+echo $MASTER_IP $MASTER_NAME >> /tmp/hosts.txt
+sudo cp -r /tmp/hosts.txt /etc/hosts
 echo $MASTER_IP $MASTER_NAME > /tmp/hosts.$$
 
 # Update ssh config file to ignore unknow host
