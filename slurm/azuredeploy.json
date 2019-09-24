@@ -78,7 +78,8 @@
               "master": "10.0.0.254"
           }
       },
-      "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets/', variables('networkSettings').virtualNetworkName, variables('networkSettings').subnet.dse.name)]"
+      "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets/', variables('networkSettings').virtualNetworkName, variables('networkSettings').subnet.dse.name)]",
+      "installationCLI": "[concat('sh azuredeploy.sh ', variables('vmNameMaster'), ' ', variables('networkSettings').statics.master, ' ', variables('vmNameWorker'), ' ', variables('networkSettings').statics.workerRange.base, ' ', variables('networkSettings').statics.workerRange.start, ' ', parameters('scaleNumber'), ' ', parameters('adminUsername'), ' ', parameters('adminPassword'), ' ', parameters('_artifactsLocation'))]"
   },
   "resources": [
       {
@@ -178,27 +179,7 @@
                       }
                   ]
               }
-          },
-          "resources": [
-              {
-                  "apiVersion": "2017-03-30",
-                  "type": "extensions",
-                  "name": "Installation",
-                  "location": "[parameters('location')]",
-                  "dependsOn": [
-                      "[variables('vmNameMaster')]"
-                  ],
-                  "properties": {
-                      "publisher": "Microsoft.Azure.Extensions",
-                      "type": "CustomScript",
-                      "typeHandlerVersion": "2.0",
-                      "autoUpgradeMinorVersion": true,
-                      "protectedSettings": {
-                          "commandToExecute": "[variables('installationCLI')]"
-                      }
-                  }
-              }
-          ]
+          }
       },
       {
           "apiVersion": "2016-09-01",
