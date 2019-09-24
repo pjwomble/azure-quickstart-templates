@@ -170,9 +170,6 @@
                       },                  
                       "managedDisk": {
                           "storageAccountType": "Standard_LRS"
-                      },
-                      "vhd": {
-                        "uri": "http://coloradoriverstatemod.blob.core.windows.net/crb/myDisk.vhd"
                       }
                   }
               },
@@ -269,9 +266,6 @@
                       },                  
                       "managedDisk": {
                           "storageAccountType": "Standard_LRS"
-                      },
-                      "vhd": {
-                        "uri": "http://coloradoriverstatemod.blob.core.windows.net/crb/myDisk2.vhd"
                       }
                   }
               },      
