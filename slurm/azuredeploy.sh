@@ -142,6 +142,7 @@ do
    sudo -u $ADMIN_USERNAME ssh $ADMIN_USERNAME@$worker >> /tmp/azuredeploy.log.$$ 2>&1 << 'ENDSSH1'
       echo $WORKER_NAME$i > /etc/hostname
       sudo sh -c "cat /tmp/hosts >> /etc/hosts"
+      sudo reboot
       sudo chmod g-w /var/log
       sudo apt-get update
       sudo apt-get install slurm-llnl -y
