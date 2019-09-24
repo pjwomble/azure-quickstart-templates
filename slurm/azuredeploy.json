@@ -168,8 +168,8 @@
                       "image": {
                         "uri": "http://coloradoriverstatemod.blob.core.windows.net/crb/master-image-20190924014726.vhd"
                       },                  
-                      "vhd": {
-                        "uri": "http://coloradoriverstatemod.blob.core.windows.net/crb/myDisk.vhd"
+                      "managedDisk": {
+                          "storageAccountType": "Standard_LRS"
                       }
                   }
               },
