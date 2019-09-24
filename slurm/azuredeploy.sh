@@ -33,6 +33,7 @@ TEMPLATE_BASE=$9
 # Update master node
 sudo true > /tmp/hosts.txt
 echo $MASTER_IP $MASTER_NAME >> /tmp/hosts.txt
+echo $MASTER_NAME > /etc/hostname
 sudo cp -r /tmp/hosts.txt /etc/hosts
 echo $MASTER_IP $MASTER_NAME > /tmp/hosts.$$
 
