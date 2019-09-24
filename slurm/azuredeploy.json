@@ -173,7 +173,7 @@
                       },
                       "vhd": {
                         "uri": "http://coloradoriverstatemod.blob.core.windows.net/crb/myDisk.vhd"
-                      },
+                      }
                   }
               },
               "networkProfile": {
@@ -272,7 +272,7 @@
                       },
                       "vhd": {
                         "uri": "http://coloradoriverstatemod.blob.core.windows.net/crb/myDisk2.vhd"
-                      },
+                      }
                   }
               },      
               "networkProfile": {
