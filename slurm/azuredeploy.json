@@ -170,6 +170,9 @@
                       "name": "[concat(variables('vmNameMaster'),'_OSDisk')]",
                       "caching": "ReadWrite",
                       "createOption": "FromImage",
+                      "image": {
+                        "uri": "http://coloradoriverstatemod.blob.core.windows.net/crb/master-image-20190924014726.vhd"
+                        },
                       "managedDisk": {
                           "storageAccountType": "Standard_LRS"
                       }
@@ -268,6 +271,9 @@
                       "name": "[concat(variables('vmNameWorker'), copyindex(),'_OSDisk')]",
                       "caching": "ReadWrite",
                       "createOption": "FromImage",
+                      "image": {
+                        "uri": "http://coloradoriverstatemod.blob.core.windows.net/crb/worker0-image-20190924014228.vhd"
+                        },                    
                       "managedDisk": {
                           "storageAccountType": "Standard_LRS"
                       }
