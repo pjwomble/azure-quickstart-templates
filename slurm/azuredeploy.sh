@@ -110,6 +110,7 @@ do
    sudo -u $ADMIN_USERNAME scp $mungekey $ADMIN_USERNAME@$worker:/tmp/munge.key >> /tmp/error.txt 2>&1
    sudo -u $ADMIN_USERNAME scp $SLURMCONF $ADMIN_USERNAME@$worker:/tmp/slurm.conf >> /tmp/error.txt 2>&1
    sudo -u $ADMIN_USERNAME scp /tmp/hosts.$$ $ADMIN_USERNAME@$worker:/tmp/hosts >> /tmp/error.txt 2>&1
+   echo $WORKER_NAME$i > $ADMIN_USERNAME@$worker:/etc/hostname
    
    echo "look here" >> /tmp/azuredeploy.log.$$ 2>&1
    grep -c "Permission denied" /tmp/error.txt >> /tmp/azuredeploy.log.$$ 2>&1
@@ -124,6 +125,7 @@ do
       sudo -u $ADMIN_USERNAME scp $mungekey $ADMIN_USERNAME@$worker:/tmp/munge.key >> /tmp/error2.txt 2>&1
       sudo -u $ADMIN_USERNAME scp $SLURMCONF $ADMIN_USERNAME@$worker:/tmp/slurm.conf >> /tmp/error2.txt 2>&1
       sudo -u $ADMIN_USERNAME scp /tmp/hosts.$$ $ADMIN_USERNAME@$worker:/tmp/hosts >> /tmp/error2.txt 2>&1
+      echo $WORKER_NAME$i > $ADMIN_USERNAME@$worker:/etc/hostname
      
       echo "error2txt" >> /tmp/azuredeploy.log.$$ 2>&1
       cat /tmp/error2.txt >> /tmp/azuredeploy.log.$$ 2>&1
@@ -137,6 +139,7 @@ do
    sudo -u $ADMIN_USERNAME scp $mungekey $ADMIN_USERNAME@$worker:/tmp/munge.key >> /tmp/azuredeploy.log.$$ 2>&1 
    sudo -u $ADMIN_USERNAME scp $SLURMCONF $ADMIN_USERNAME@$worker:/tmp/slurm.conf >> /tmp/azuredeploy.log.$$ 2>&1
    sudo -u $ADMIN_USERNAME scp /tmp/hosts.$$ $ADMIN_USERNAME@$worker:/tmp/hosts >> /tmp/azuredeploy.log.$$ 2>&1
+   echo $WORKER_NAME$i > $ADMIN_USERNAME@$worker:/etc/hostname
 
    echo "Remote execute on $worker" >> /tmp/azuredeploy.log.$$ 2>&1 
    sudo -u $ADMIN_USERNAME ssh $ADMIN_USERNAME@$worker >> /tmp/azuredeploy.log.$$ 2>&1 << 'ENDSSH1'
