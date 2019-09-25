@@ -157,12 +157,14 @@
               "osProfile": {
                   "computerName": "[variables('vmNameMaster')]",
                   "adminUsername": "[parameters('adminUsername')]",
-                  "adminPassword": "[parameters('adminPassword')]",
-                "linuxConfiguration": {"provisionVMAgent": true}
+                  "adminPassword": "[parameters('adminPassword')]"
               },
               "storageProfile": {
                   "imageReference": {
-                      "id": "/subscriptions/a1929e86-d8fe-434a-9df3-c9d5845141c8/resourceGroups/CRB_Storage/providers/Microsoft.Compute/images/master-image-20190924014726"
+                      "publisher": "[variables('imagePublisher')]",
+                      "offer": "[variables('imageOffer')]",
+                      "sku": "[variables('ubuntuOSVersion')]",
+                      "version": "latest"
                   },
                   "osDisk": {
                       "name": "[concat(variables('vmNameMaster'),'_OSDisk')]",
@@ -180,32 +182,7 @@
                       }
                   ]
               }
-          },
-          "resources": [
-              {
-                  "apiVersion": "2017-03-30",
-                  "type": "extensions",
-                  "name": "Installation",
-                  "location": "[parameters('location')]",
-                  "dependsOn": [
-                      "[variables('vmNameMaster')]"
-                  ],
-                  "properties": {
-                      "publisher": "Microsoft.Azure.Extensions",
-                      "type": "CustomScript",
-                      "typeHandlerVersion": "2.0",
-                      "autoUpgradeMinorVersion": true,
-                      "settings": {
-                          "fileUris": [
-                              "[concat(parameters('_artifactsLocation'), '/azuredeploy.sh', parameters('_artifactsLocationSasToken'))]"
-                          ]
-                      },                                        
-                      "protectedSettings": {
-                          "commandToExecute": "[variables('installationCLI')]"
-                      }
-                  }
-              }
-          ]
+          }
       },
       {
           "apiVersion": "2016-09-01",
@@ -253,12 +230,14 @@
               "osProfile": {
                   "computerName": "[concat(variables('vmNameWorker'), copyindex())]",
                   "adminUsername": "[parameters('adminUsername')]",
-                  "adminPassword": "[parameters('adminPassword')]",
-                  "linuxConfiguration": {"provisionVMAgent": true}
+                  "adminPassword": "[parameters('adminPassword')]"
               },          
               "storageProfile": {
                   "imageReference": {
-                      "id": "/subscriptions/a1929e86-d8fe-434a-9df3-c9d5845141c8/resourceGroups/CRB_Storage/providers/Microsoft.Compute/images/worker0-image-20190924014228"
+                      "publisher": "[variables('imagePublisher')]",
+                      "offer": "[variables('imageOffer')]",
+                      "sku": "[variables('ubuntuOSVersion')]",
+                      "version": "latest"
                   },
                   "osDisk": {
                       "name": "[concat(variables('vmNameWorker'), copyindex(),'_OSDisk')]",
