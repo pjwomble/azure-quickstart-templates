@@ -158,7 +158,7 @@
                   "computerName": "[variables('vmNameMaster')]",
                   "adminUsername": "[parameters('adminUsername')]",
                   "adminPassword": "[parameters('adminPassword')]",
-                  "provisionVMAgent": true
+                "linuxConfiguration": {"provisionVMAgent": true}
               },
               "storageProfile": {
                   "imageReference": {
@@ -254,7 +254,7 @@
                   "computerName": "[concat(variables('vmNameWorker'), copyindex())]",
                   "adminUsername": "[parameters('adminUsername')]",
                   "adminPassword": "[parameters('adminPassword')]",
-                  "provisionVMAgent": true
+                  "linuxConfiguration": {"provisionVMAgent": true}
               },          
               "storageProfile": {
                   "imageReference": {
