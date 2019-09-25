@@ -157,7 +157,8 @@
               "osProfile": {
                   "computerName": "[variables('vmNameMaster')]",
                   "adminUsername": "[parameters('adminUsername')]",
-                  "adminPassword": "[parameters('adminPassword')]"
+                  "adminPassword": "[parameters('adminPassword')]",
+                  "provisionVMAgent": "TRUE"
               },
               "storageProfile": {
                   "imageReference": {
@@ -252,7 +253,8 @@
               "osProfile": {
                   "computerName": "[concat(variables('vmNameWorker'), copyindex())]",
                   "adminUsername": "[parameters('adminUsername')]",
-                  "adminPassword": "[parameters('adminPassword')]"
+                  "adminPassword": "[parameters('adminPassword')]",
+                  "provisionVMAgent": "TRUE"
               },          
               "storageProfile": {
                   "imageReference": {
