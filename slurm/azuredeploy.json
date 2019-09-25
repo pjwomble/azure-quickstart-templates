@@ -167,7 +167,7 @@
                       "managedDisk": {
                           "storageAccountType": "Standard_LRS"
                       },
-                    "image": {
+                    "vhd": {
                       "uri": "/subscriptions/a1929e86-d8fe-434a-9df3-c9d5845141c8/resourceGroups/CRB_Storage/providers/Microsoft.Compute/snapshots/master_OSDisk_SAVE"
                     }
                   }
@@ -262,7 +262,7 @@
                       "managedDisk": {
                           "storageAccountType": "Standard_LRS"
                       },
-                    "image": {
+                    "vhd": {
                       "uri": "/subscriptions/a1929e86-d8fe-434a-9df3-c9d5845141c8/resourceGroups/CRB_Storage/providers/Microsoft.Compute/snapshots/worker_OSDisk_SAVE"
                     }
                   }
