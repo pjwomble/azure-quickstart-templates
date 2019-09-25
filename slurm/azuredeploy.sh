@@ -31,30 +31,8 @@ ADMIN_PASSWORD=$8
 TEMPLATE_BASE=$9
 
 # Update master node
-sudo hostname master
-
-sudo true > /tmp/hosts.txt
-echo $MASTER_IP $MASTER_NAME >> /tmp/hosts.txt
-echo $MASTER_NAME > /etc/hostname
-sudo cp -r /tmp/hosts.txt /etc/hosts
+echo $MASTER_IP $MASTER_NAME >> /etc/hosts
 echo $MASTER_IP $MASTER_NAME > /tmp/hosts.$$
-
-echo "loop over workers hostnames" >> /tmp/azuredeploy.log.$$ 2>&1 
-while [ $i -lt $NUM_OF_VM ]
-do
-   worker=$WORKER_NAME$i
-
-   echo $WORKER_NAME$i > /tmp/hosts.txt
-   sudo -u $ADMIN_USERNAME scp /tmp/hosts.txt $ADMIN_USERNAME@$worker:/etc/hostname >> /tmp/azuredeploy.log.$$
-   echo $WORKER_IP_BASE$workerip $WORKER_NAME$i > /tmp/hosts.txt
-   sudo -u $ADMIN_USERNAME scp /tmp/hosts.txt $ADMIN_USERNAME@$worker:/etc/hosts >> /tmp/azuredeploy.log.$$
-
-   echo "Remote execute on $worker" >> /tmp/azuredeploy.log.$$ 2>&1 
-   sudo -u $ADMIN_USERNAME ssh $ADMIN_USERNAME@$worker >> /tmp/azuredeploy.log.$$ 2>&1 << 'ENDSSH1'
-      sudo hostname $WORKER_NAME$i >> /tmp/azuredeploy.log.$$
-ENDSSH1
-   i=`expr $i + 1`
-done
 
 # Update ssh config file to ignore unknow host
 # Note all settings are for azureuser, NOT root
