@@ -160,6 +160,12 @@
                   "adminPassword": "[parameters('adminPassword')]"
               },
               "storageProfile": {
+                  "imageReference": {
+                      "publisher": "[variables('imagePublisher')]",
+                      "offer": "[variables('imageOffer')]",
+                      "sku": "[variables('ubuntuOSVersion')]",
+                      "version": "latest"
+                  },                
                   "osDisk": {
                       "name": "[concat(variables('vmNameMaster'),'_OSDisk')]",
                       "caching": "ReadWrite",
@@ -253,6 +259,12 @@
                   "adminPassword": "[parameters('adminPassword')]"
               },
               "storageProfile": {
+                  "imageReference": {
+                      "publisher": "[variables('imagePublisher')]",
+                      "offer": "[variables('imageOffer')]",
+                      "sku": "[variables('ubuntuOSVersion')]",
+                      "version": "latest"
+                  },                
                   "osDisk": {
                       "name": "[concat(variables('vmNameWorker'), copyindex(),'_OSDisk')]",
                       "caching": "ReadWrite",
