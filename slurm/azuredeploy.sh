@@ -44,8 +44,10 @@ while [ $i -lt $NUM_OF_VM ]
 do
    worker=$WORKER_NAME$i
 
-   echo $WORKER_NAME$i > $ADMIN_USERNAME@$worker:/etc/hostname >> /tmp/azuredeploy.log.$$
-   echo $WORKER_IP_BASE$workerip $WORKER_NAME$i > $ADMIN_USERNAME@$worker:/etc/hosts >> /tmp/azuredeploy.log.$$
+   echo $WORKER_NAME$i > /tmp/hosts.txt
+   sudo -u $ADMIN_USERNAME /tmp/hosts.txt $ADMIN_USERNAME@$worker:/etc/hostname >> /tmp/azuredeploy.log.$$
+   echo $WORKER_IP_BASE$workerip $WORKER_NAME$i > /tmp/hosts.txt
+   sudo -u $ADMIN_USERNAME /tmp/hosts.txt $ADMIN_USERNAME@$worker:/etc/hosts >> /tmp/azuredeploy.log.$$
 
    echo "Remote execute on $worker" >> /tmp/azuredeploy.log.$$ 2>&1 
    sudo -u $ADMIN_USERNAME ssh $ADMIN_USERNAME@$worker >> /tmp/azuredeploy.log.$$ 2>&1 << 'ENDSSH1'
