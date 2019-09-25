@@ -162,7 +162,6 @@
                 "storageProfile": {
                     "osDisk": {
                         "name": "[concat(variables('vmNameMaster'),'_OSDisk')]",
-                        "caching": "ReadWrite",
                         "createOption": "attach",
                         "osType": "Linux",
                         "managedDisk": {
@@ -255,7 +254,6 @@
                 "storageProfile": {
                     "osDisk": {
                         "name": "[concat(variables('vmNameWorker'), copyindex(),'_OSDisk')]",
-                        "caching": "ReadWrite",                   
                         "createOption": "attach",
                         "osType": "Linux",
                         "managedDisk": {
