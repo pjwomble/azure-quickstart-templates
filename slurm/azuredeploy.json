@@ -52,9 +52,9 @@
   },
   "variables": {
       "dnsName": "[concat('slurm-', uniqueString(resourceGroup().id))]",
-      "imagePublisher": "Canonical",
-      "imageOffer": "UbuntuServer",
-      "ubuntuOSVersion": "16.04-LTS",
+      "imagePublisher": "microsoft-dsvm",
+      "imageOffer": "linux-data-science-vm-ubuntu",
+      "ubuntuOSVersion": "linuxdsvmubuntu",
       "publicIPAddressName": "publicip",
       "vmNameMaster": "master",
       "vmNameWorker": "worker",
