@@ -152,7 +152,7 @@
           ],
           "properties": {
               "hardwareProfile": {
-                  "vmSize": "Standard_E2_v3"
+                  "vmSize": "Standard_D1_v2"
               },
               "osProfile": {
                   "computerName": "[variables('vmNameMaster')]",
@@ -161,10 +161,7 @@
               },
               "storageProfile": {
                   "imageReference": {
-                      "publisher": "[variables('imagePublisher')]",
-                      "offer": "[variables('imageOffer')]",
-                      "sku": "[variables('ubuntuOSVersion')]",
-                      "version": "latest"
+                      "id": "/subscriptions/a1929e86-d8fe-434a-9df3-c9d5845141c8/resourceGroups/CRB_Storage/providers/Microsoft.Compute/images/master-image-20190924014726"
                   },
                   "osDisk": {
                       "name": "[concat(variables('vmNameMaster'),'_OSDisk')]",
@@ -174,7 +171,7 @@
                           "storageAccountType": "Standard_LRS"
                       }
                   }
-              },          
+              },
               "networkProfile": {
                   "networkInterfaces": [
                       {
@@ -201,7 +198,7 @@
                           "fileUris": [
                               "[concat(parameters('_artifactsLocation'), '/azuredeploy.sh', parameters('_artifactsLocationSasToken'))]"
                           ]
-                      },
+                      },                                        
                       "protectedSettings": {
                           "commandToExecute": "[variables('installationCLI')]"
                       }
@@ -256,13 +253,10 @@
                   "computerName": "[concat(variables('vmNameWorker'), copyindex())]",
                   "adminUsername": "[parameters('adminUsername')]",
                   "adminPassword": "[parameters('adminPassword')]"
-              },
+              },          
               "storageProfile": {
                   "imageReference": {
-                      "publisher": "[variables('imagePublisher')]",
-                      "offer": "[variables('imageOffer')]",
-                      "sku": "[variables('ubuntuOSVersion')]",
-                      "version": "latest"
+                      "id": "/subscriptions/a1929e86-d8fe-434a-9df3-c9d5845141c8/resourceGroups/CRB_Storage/providers/Microsoft.Compute/images/worker0-image-20191002082121"
                   },
                   "osDisk": {
                       "name": "[concat(variables('vmNameWorker'), copyindex(),'_OSDisk')]",
@@ -272,7 +266,7 @@
                           "storageAccountType": "Standard_LRS"
                       }
                   }
-              },       
+              },
               "networkProfile": {
                   "networkInterfaces": [
                       {
