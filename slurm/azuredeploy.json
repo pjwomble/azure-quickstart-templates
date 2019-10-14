@@ -161,7 +161,7 @@
               },
               "storageProfile": {
                   "imageReference": {
-                      "id": "/subscriptions/a1929e86-d8fe-434a-9df3-c9d5845141c8/resourceGroups/CRB_Storage/providers/Microsoft.Compute/images/slurmbase"
+                      "id": "/subscriptions/a1929e86-d8fe-434a-9df3-c9d5845141c8/resourceGroups/CRB_Storage/providers/Microsoft.Compute/images/master"
                   },
                   "osDisk": {
                       "name": "[concat(variables('vmNameMaster'),'_OSDisk')]",
@@ -256,7 +256,7 @@
               },          
               "storageProfile": {
                   "imageReference": {
-                      "id": "/subscriptions/a1929e86-d8fe-434a-9df3-c9d5845141c8/resourceGroups/CRB_Storage/providers/Microsoft.Compute/images/slurmbase"
+                      "id": "/subscriptions/a1929e86-d8fe-434a-9df3-c9d5845141c8/resourceGroups/CRB_Storage/providers/Microsoft.Compute/images/worker"
                   },
                   "osDisk": {
                       "name": "[concat(variables('vmNameWorker'), copyindex(),'_OSDisk')]",
